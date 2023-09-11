@@ -63,11 +63,17 @@ class MainActivity : AppCompatActivity() {
             //val questionTextResId = questionBank[currentIndex].textResId
             //binding.questionTextview.setText(questionTextResId)
             updateQuestion()
-
         }
 
         binding.questionTextview.setOnClickListener{
             currentIndex = (currentIndex + 1) % questionBank.size
+            updateQuestion()
+        }
+
+        binding.prevButton.setOnClickListener{
+            currentIndex = (currentIndex - 1) % questionBank.size
+            //val questionTextResId = questionBank[currentIndex].textResId
+            //binding.questionTextview.setText(questionTextResId)
             updateQuestion()
         }
 
