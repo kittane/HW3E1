@@ -37,25 +37,27 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.trueButton.setOnClickListener {
-            val snackBar = Snackbar.make(
-                it,
-                "Correct!",
-                Snackbar.LENGTH_LONG
-            )
-            snackBar.setTextColor(Color.BLACK)
-            snackBar.setBackgroundTint(Color.GREEN)
-            snackBar.show()
+//            val snackBar = Snackbar.make(
+//                it,
+//                "Correct!",
+//                Snackbar.LENGTH_LONG
+//            )
+//            snackBar.setTextColor(Color.BLACK)
+//            snackBar.setBackgroundTint(Color.GREEN)
+//            snackBar.show()
+            checkAnswer(true)
         }
 
         binding.falseButton.setOnClickListener{
-            val snackBar = Snackbar.make(
-                it,
-                "Incorrect!",
-                Snackbar.LENGTH_LONG
-            )
-            snackBar.setTextColor(Color.BLACK)
-            snackBar.setBackgroundTint(Color.RED)
-            snackBar.show()
+//            val snackBar = Snackbar.make(
+//                it,
+//                "Incorrect!",
+//                Snackbar.LENGTH_LONG
+//            )
+//            snackBar.setTextColor(Color.BLACK)
+//            snackBar.setBackgroundTint(Color.RED)
+//            snackBar.show()
+            checkAnswer(false)
         }
 
         binding.nextButton.setOnClickListener{
@@ -85,5 +87,17 @@ class MainActivity : AppCompatActivity() {
         val questionTextResId = questionBank[currentIndex].textResId
         binding.questionTextview.setText(questionTextResId)
 
+    }
+
+    private fun checkAnswer(userAnswer: Boolean) {
+        val correctAnswer = questionBank[currentIndex].answer
+
+        val messageResId = if (userAnswer == correctAnswer) {
+            R.string.correct_toast
+        } else {
+            R.string.incorrect_toast
+        }
+
+        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT) .show()
     }
 }
