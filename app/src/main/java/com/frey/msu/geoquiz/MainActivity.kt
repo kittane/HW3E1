@@ -13,8 +13,6 @@ import com.google.android.material.snackbar.Snackbar
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    // private lateinit var trueButton : Button
-    // private lateinit var falseButton : Button
 
     private val questionBank = listOf(
         Question(R.string.question_australia, true),
@@ -29,41 +27,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-       // trueButton = findViewById(R.id.true_button)
-       // falseButton = findViewById(R.id.false_button)
 
 
         binding.trueButton.setOnClickListener {
-//            val snackBar = Snackbar.make(
-//                it,
-//                "Correct!",
-//                Snackbar.LENGTH_LONG
-//            )
-//            snackBar.setTextColor(Color.BLACK)
-//            snackBar.setBackgroundTint(Color.GREEN)
-//            snackBar.show()
             checkAnswer(true)
         }
 
         binding.falseButton.setOnClickListener{
-//            val snackBar = Snackbar.make(
-//                it,
-//                "Incorrect!",
-//                Snackbar.LENGTH_LONG
-//            )
-//            snackBar.setTextColor(Color.BLACK)
-//            snackBar.setBackgroundTint(Color.RED)
-//            snackBar.show()
             checkAnswer(false)
         }
 
         binding.nextButton.setOnClickListener{
             currentIndex = (currentIndex + 1) % questionBank.size
-            //val questionTextResId = questionBank[currentIndex].textResId
-            //binding.questionTextview.setText(questionTextResId)
             updateQuestion()
         }
 
@@ -74,8 +51,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.prevButton.setOnClickListener{
             currentIndex = (currentIndex - 1) % questionBank.size
-            //val questionTextResId = questionBank[currentIndex].textResId
-            //binding.questionTextview.setText(questionTextResId)
             updateQuestion()
         }
 
